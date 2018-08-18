@@ -1,0 +1,533 @@
+{
+   "firebase config":{
+       "prefix": "fireconfig",
+       "body":[
+        "var config = {",
+            "apiKey: ${1:apiKey},",
+            "authDomain: ${2:projectId.firebaseapp.com},",
+            "databaseURL: ${3:https://databaseName.firebaseio.com},",
+            "storageBucket: ${4:bucket.appspot.com}",
+          "};",
+          "firebase.initializeApp(config);"
+       ],
+       "description":"Configure Firebase"
+   },
+
+   "firebase reference":{
+       "prefix":"firereference",
+       "body": "let ${1:database} = firebase.database();",
+       "description":"Get a reference to the firebase service"
+   },
+
+   "firebase set data":{
+       "prefix":"fireset",
+       "body":[
+        "firebase.database().ref(${0:/* path */}).set({",
+            "${1: /* attribute: value */}",
+            "});"
+       ],
+       "description": "Set data to the firebase database"
+   },
+
+   "firebase retrieve data":{
+       "prefix":"fireretrieve",
+       "body":[
+        "firebase.database().ref(${0:/* path */}).on(${0:eventType},(${1:snapshot})=> {",
+            "${2: /* handle read data */}",
+            "console.log(${3: /* log data */}",
+        " });"
+       ],
+       "description":"Retrieve data from firebase"
+   },
+
+   "firebase retrieve and loop data":{
+       "prefix":"fireretrieveloop",
+       "body":[
+        "firebase.database().ref(${0:/* path */}).on(${0:eventType},(${1:snapshot})=> {",
+            "${1:snapshot}.forEach((${2:childSnapshot})=>{",
+            "${3: /* handle read data */}",
+            "console.log(${4: /* log data */})",
+        " });"
+       ],
+       "description": "Retrieve data and loop inside the direct children"
+   },
+
+   "firebase val":{
+       "prefix":"firebaseval",
+       "body": ["let ${0:names}=${1:snapshot}.val().${2:name}",
+        "/* retrieve the name from the database */"
+       ],
+       "description":"Using val() method to retrieve the data inside a listener"
+   },
+
+   "firebase retrieve once":{
+    "prefix":"fireretrieveonce",
+    "body":[
+     "firebase.database().ref(${0:/* path */}).once(${0:eventType}).then((${1:snapshot})=> {",
+         "${2: /* handle read data */}",
+         "console.log(${3: /* log data */}",
+     "});"
+    ],
+    "description": "Retrieve data once"
+},
+
+"firebase create a key":{
+    "prefix":"firekey",
+    "body": "let ${0:newPostKey} = firebase.database().ref().child(${1:/* path */}).push().key;",
+    "description": "Create a key and simultaneously retrieve the key"
+},
+"Firebase Update": {
+    "prefix": "fireupdate",
+    "body": "${1:ref}.update(${2: value} , ${0:/* onComplete */});",
+    "description": "Updating specific fields"
+},
+
+"Firebase Remove":{
+    "prefix":"fireremove",
+    "body":"let ${0:ref} = firebase.database().ref().child(${1:/* path */}).remove();",
+    "description": "Remove data at a certain location"
+},
+
+"Firebase transactions": {
+    "prefix": "firetransaction",
+    "body": "firebase.database().ref().transaction(${2: updateFunction}, ${3:/* onComplete */}, ${0:/* do the required*/});",
+    "description": "firebase transactions"
+},
+
+"Firebase OrderByChild":{
+    "prefix":"fireorderBychild",
+    "body": "let ${0:retrieveData} = firebase.database().ref(${1:/* path */}).orderByChild(${2: /* child key */});",
+    "description": "Order results by the value of a specified child key or nested child path."
+
+},
+
+"Firebase OrderByValue":{
+    "prefix":"fireorderByvalue",
+    "body": "let ${0:retrieveData} = firebase.database().ref(${1:/* path */}).orderByValue();",
+    "description": "Order results by child values."
+
+},
+
+"Firebase OrderByKey":{
+    "prefix":"fireorderBykey",
+    "body": "let ${0:retrieveData} = firebase.database().ref(${1:/* path */}).orderByKey();",
+    "description": "Order results by child keys."
+
+},
+
+"Firebase limitToFirst":{
+    "prefix":"firelimittofirst",
+    "body":["let ${0:postsRef} = firebase.database().ref(${1:/* path */}).limitToFirst(${2:number});",
+    "//can be used with one order-by method and multiple limit or range functions"
+    ],
+    "description": 	"Sets the maximum number of items to return from the end of the ordered list of results."
+},
+
+"Firebase limitToLast":{
+    "prefix":"firelimittolast",
+    "body":[ "let ${0:postsRef} = firebase.database().ref(${1:/* path */}).limitToLast(${2:number});",
+        "//can be used with one order-by method and multiple limit or range functions"
+    ],
+    "description": "Sets the maximum number of items to return from the beginning of the ordered list of results."
+},
+
+"Firebase startAt":{
+    "prefix":"firestartAt",
+    "body":[ "let ${0:postsRef} = firebase.database().ref(${1:/* path */}).startAt(${2:number});",
+        "//can be used with one order-by method and multiple limit or range functions"
+    ],
+    "description":"Return items greater than or equal to the specified key or value, depending on the order-by method chosen."
+},
+
+"firebase endAt":{
+    "prefix":"fireendat",
+    "body":[ "let ${0:postsRef} = firebase.database().ref(${1:/* path */}).endAt(${2:number});",
+        "//can be used with one order-by method and multiple limit or range functions"
+        
+    ],
+    "description":"Return items less than or equal to the specified key or value, depending on the order-by method chosen."
+},
+
+"firebase equalTo":{
+    "prefix":"fireequalto",
+    "body":[ "let ${0:postsRef} = firebase.database().ref(${1:/* path */}).orderByChild(${2: /* child key */}).equalTo(${3:value});",
+        "//can be used with one order-by method and multiple limit or range functions"
+    ],
+    "description": "Return items equal to the specified key or value, depending on the order-by method chosen."
+},
+
+"firebase exists":{
+    "prefix":"fireexists",
+    "body": "let ${0:child} = ${1: snapshot}.exists();",
+    "description": "Returns true if this dataSnapshot contains any data"
+},
+
+"firebase hasChild":{
+    "prefix":"firehaschild",
+    "body":" let ${0:hasName} = ${1:snapshot}.hasChild(${2:/* name */}); ",
+    "description":"Returns true if this datasnapshot contains the specified child"
+},
+
+"firebase hasChildren":{
+    "prefix":"firehaschildren",
+    "body":" let ${0:datas} = ${1:snapshot}.hasChildren(); ",
+    "description":" Returns true is this datasnapshot contains any children"
+},
+
+"firebase numChildren":{
+    "prefix":"firenumchildren",
+    "body":" let ${0:numOfChildren} = ${1:snapshot}.numChildren();",
+    "description":" Returns the number of child properties of this datasnapshot"
+},
+
+"firebase detach listener":{
+    "prefix":"firedetach",
+    "body":"${0:ref}.off(${1:eventType}, ${2:callback /* optional, callback function that was passed to on */});",
+    "description":"Removing a listener"
+},
+
+"firebase storage reference":{
+    "prefix":"firestorageref",
+    "body": "let ${0:storage} = firebase.storage();",
+    "description":"Get a reference to the storage service, which is used to create references in your storage bucket."
+},
+
+"firebase storage child reference":{
+    "prefix":"firestoragechildref",
+    "body":[ "var ${0:storage} = firebase.storage();",
+        "var ${1:storageRef} = ${0:storage}.ref();",
+        "var ${2:imagesRef} = ${3:storageRef}.child(${4: /* image path */});"
+    ],
+    "description": "Create a reference to a location lower in the tree, say 'images.jpg."
+},
+
+"firebase storage url reference":{
+    "prefix":"firestorageurlref",
+    "body":"let ${0:gsReference} = storage.refFromURL(${1: /* gs:// or https:// */})",
+    "description":"Create a reference from a Google Cloud Storage URI or https url."
+},
+
+"firebase download file":{
+    "prefix":"firestoragedownloadfile",
+    "body":["firebase.storage().ref().child(${0:/* path */}).getDownloadURL().then(function(${1:url) {",
+        "//`url` is the download URL for the file.",
+        "/*download using XMLHttpRequest() and handle errors*/",
+        " });"
+    ],
+    "description":"Getting the download file from firebase storage."
+    },
+
+    "firebase delete file":{
+        "prefix":"firestoragedeletefile",
+        "body": "${0:ref}.delete().then(function() {",
+        "description":"Delete a file"
+    },
+
+    "firebase sign up":{
+        "prefix":"firesignupemail",
+        "body":[
+         "firebase.auth().createUserWithEmailAndPassword(${0:email}, ${1:password}).catch(function(error) {",
+            "// Handle Errors here.",
+            "let ${2:errorCode} = error.code;",
+            "let ${3:errorMessage} = error.message;",
+          "});"   
+        ],
+        "description":"Authenticate a new user using email and password"
+    },
+
+    "firebase sign in":{
+        "prefix":"firesigninemail",
+        "body":[
+            "firebase.auth().signInWithEmailAndPassword(${0:email}, ${1:password}).catch(function(error) {",
+                "// Handle Errors here.",
+                "let ${2:errorCode} = error.code;",
+                "let ${3:errorMessage} = error.message;",
+              "});" 
+        ],
+        "description":"Sign in an existing user"
+    },
+    
+    "firebase Auth State":{
+        "prefix":"fireauthstate",
+        "body":["firebase.auth().onAuthStateChanged(function(${0:user}) {",
+                "${1: /* user information */}",
+        "});"
+
+        ],
+        "description": "Attach an observer using onAuthStateChanged to retrieve user infomration."
+    },
+
+    "firebase Current User":{
+        "prefix":"firecurrentuser",
+        "body":[
+            "firebase.auth().onAuthStateChanged(function(${0:user}) { //or use firebase.auth().currentUser;",
+               "if (user) {",
+                 " // User is signed in.",
+                "} else {",
+                  "// No user is signed in.",
+                "}",
+              "});"
+        ],
+        "description":"Retrieves the currently logged in user"
+    },
+
+    "firebase user profile":{
+        "prefix":"fireuserprofile",
+        "body":[
+            "var ${0:user} = firebase.auth().currentUser;",
+            "var ${1:name}, ${2:email}, ${3:photoUrl}, ${4:uid}, ${5:emailVerified};",
+            
+            "if (${0:user} != null) {",
+                "${4:uid} = user.uid;",
+                "}"
+        ],
+        "description": "Retrieves the user information."
+    },
+
+    "firebase Update Profile":{
+        "prefix":"fireupdateprofile",
+        "body": "${0:user}.updateProfile({${1:displayName}:${2:name}});",
+        "description":"Updates the user profile"
+    },
+    
+
+    "firebase provider information":{
+        "prefix":"fireproviderinfo",
+        "body":["${0:user}.providerData.forEach(function (${1:profile}) {",
+            "/* retrieve provider info */",
+            "});"
+        ],
+        "description":"Retrieves information from sign in provider."
+    },
+
+    "firebase user email":{
+        "prefix":"fireupdateemail",
+        "body":[
+            "${0:user}.updateEmail(${1:email}).then(function() {",
+                "// Update successful.",
+             "}).catch(function(error) {",
+                "// An error happened.",
+             " });"
+            
+        ],
+        "description":"Set a user email address, the user must have signed in recently."
+    },
+
+    "firebase Send Email Verification":{
+        "prefix":"fireemailverify",
+        "body":[
+            "${0:user}.sendEmailVerification().then(function() {",
+                "// sent email.",
+             "}).catch(function(error) {",
+                "// An error happened.",
+             " });"
+        ],
+        "description":"Send an email verification to the user."
+    },
+
+    "firebase set password":{
+        "prefix":"firesetpass",
+        "body":[
+            "let ${0:newPassword} = getASecureRandomPassword();",
+            "${1:user}.updatePassword(${2:newpassword}).then(function() {",
+                "// Update successful.",
+             "}).catch(function(error) {",
+                "// An error happened.",
+             " });"
+        ],
+        "description":"Set a user password, the user must have signed in recently"
+    },
+
+    "firebase password reset":{
+        "prefix":"firepassreset",
+        "body":[
+            "${1:auth}.sendPasswordResetEmail(${2:email}).then(function() {",
+                "// Email Sent.",
+             "}).catch(function(error) {",
+                "// An error happened.",
+             " });"
+        ],
+
+        "description":"Send a password reset email to a user"
+    },
+
+    "firebase delete user":{
+        "prefix":"firedeleteuser",
+        "body":[
+            "let ${1:user} = firebase.auth().currentUser;",
+            "${1:user}.delete().then(function() {",
+                "// Update Deleted.",
+             "}).catch(function(error) {",
+                "// An error happened.",
+             " });"
+        ],
+
+        "description":"Delete a user account with the delete method."
+    },
+
+    "firebase sign out":{
+        "prefix":"firesignout",
+        "body":[
+            "firebase.auth().signOut().then(function() {",
+                "// Sign-out successful.",
+              "}).catch(function(error) {",
+                "// An error happened.",
+              "});" 
+        ],
+        "description":"Sign out the user."
+    },
+
+    "firebase google instance":{
+        "prefix":"firegoogleinstance",
+        "body": "let ${0:provider} = new firebase.auth.GoogleAuthProvider();",
+        "description":"Get instance of the google provider."
+    },
+
+    "firebase provider Sign in":{
+        "prefix":"fireprovidersignin",
+        "body":"firebase.auth().signInWithRedirect(${0:provider}); //for google,facebook,twitter, and github",
+        "description":"Sign in with google"
+    },
+    "firebase facebook instance":{
+        "prefix":"firefacebookinstance",
+        "body":"let ${0:provider} = new firebase.auth.FacebookAuthProvider();",
+        "description":"Get instance of facebook provider"
+    },
+    "firebase twitter instance":{
+        "prefix":"firetwitterinstance",
+        "body":"let ${0:provider} = new firebase.auth.TwitterAuthProvider();",
+        "description":"Get instance of twitter provider"
+    },
+    "firebase github instance":{
+        "prefix":"firegithubinstance",
+        "body":"let ${0:provider} = new firebase.auth.GithubAuthProvider();",
+        "description":"Get instance of github provider"
+    },
+    
+    "firebase custom auth":{
+        "prefix":"firecustomauth",
+        "body":[
+            "firebase.auth().signInWithCustomToken(${0:token}).catch(function(${1:error}) {",
+            "// Handle Errors here.",
+            "let ${2:errorCode} = error.code;",
+            "let ${3:errorMessage} = error.message;",
+            "// ...",
+          "});"
+        ],
+        "description":"Sign in the user using custom authentication"
+    },
+    "firebase anonymously":{
+        "prefix":"fireanonymously",
+        "body":[
+            "firebase.auth().signInAnonymously().catch(function(error) {",
+                "// Handle Errors here.",
+                "let ${1:errorCode} = error.code;",
+                "let ${2:errorMessage} = error.message;",
+                "// ...",
+              "});"
+        ],
+        "description":"Sign in the user anonymously"
+    },
+    "firestore Initialize":{
+        "prefix":"initializefirestore",
+        "body":"let ${0:db} = firebase.firestore();",
+        "description":"Initialize Cloud Firestore through Firebase."
+    },
+    "firestore add data":{
+        "prefix":"adddatafirestore",
+        "body":[
+            "${0:db}.collection(${1:/* collection */}).add({ //add creates a unique id for you", 
+                "${2:attribute}: ${3:value}",
+           "})",
+            ".then(function(docRef) {",
+               "${4: /* log data */}",
+            "})",
+            ".catch(function(error) {",
+                "${5:/* error */}",
+           "});"
+        ],
+        "description":"Creating a new collection and document in firestore."
+    },
+    "firestore read data":{
+        "prefix":"readdatafirestore",
+        "body":[
+            "${0:db}.collection(${1:/* collection_name */}).get().then((${2:querySnapshot}) => {",
+                "${2:querySnapshot}.forEach((doc) => {",
+                    "${3:/* log the data */}",
+                " });",
+            " });"
+        ],
+        "description":"Read data from a collection in firestore"
+    },
+    
+    "firestore reference":{
+        "prefix":"referencefirestore",
+        "body":"let ${0:docRef} = ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+        "description":"Add firestore reference"
+    },
+    "firestore update document":{
+        "prefix":"updatefirestore",
+        "body":[
+            "var ${0:ref} = ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+            "return ${0:ref}.update({",
+                "${4:attribute}:${5:newValue}",
+            "})",
+            ".then(function() {",
+           " })",
+           " .catch(function(${6:error}) {",
+                "// The document probably doesn't exist.",
+                "console.error(${6:error});",
+           " });"
+            
+        ],
+        "description":"Update the document in firestore."
+    },
+
+    "firestore delete document":{
+        "prefix":"deletedocfirestore",
+        "body":[
+            "${0:db}.collection(${2:/* collection_name */}).doc${3: /* document_name */}).delete().then(function() {",
+                "${4:/* log the data */}",
+            "}).catch(function(error) {",
+                "console.error(${5:error});",
+            "});"
+        ],
+        "description":"Delete a document in firestore"
+    },
+    
+    "firestore delete a field":{
+        "prefix":"deletefieldfirestore",
+        "body":[
+            "let ${0:ref}= ${0:db}.collection(${2:/* collection_name */}).doc${3: /* document_name */});",
+            "let ${4:removeField} = ${5:ref}.update({",
+                "${6:fieldName}: firebase.firestore.FieldValue.delete()",
+           " });"
+        ],
+        "description":"Delete a field in firestore document."
+    },
+    
+    "firestore where query":{
+        "prefix":"wherefirestore",
+        "body":[
+         "// Create a query against the collection.",
+         "let ${1:query} = ${0:ref}.where(${2:/*field_name */}, ${3:/* == */}, ${4:/* value */});"
+          
+        ],
+        "description":"where query in firestore"
+    },
+    "firestore limit":{
+        "prefix":"limitfirestore",
+        "body": "${0:ref}.orderBy(${1:/* fieldname */}).limit(${2: /* number */});",
+        "description": "Retrieves the first three value of the field."
+    },
+    "firestore order multiple fields":{
+        "prefix":"ordermultifirestore",
+        "body":[
+            "${0:ref}.orderBy(${1:/* fieldname */}).orderBy(${2: /* name */}, ${3: /* desc */});"
+        ],
+        "description":"Order by multiple fields in firestore."
+    }
+
+    }
+
+    
