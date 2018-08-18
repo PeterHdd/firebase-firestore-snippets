@@ -15,7 +15,7 @@
 
 ### Firebase
 | Trigger  | Description |
-| -------: | ------- |
+| -------: | ------ |
 | `fireconfig`   | Configure Firebase |
 | `firereference`   | Get a reference to the firebase service |
 | `fireset`   | Set data to the firebase database |
@@ -32,7 +32,7 @@
 | `fireorderBykey`   | Order results by child keys |
 | `firelimittofirst`   | Sets the maximum number of items to return from the end of the ordered list of results |
 | `firelimittolast`   | Sets the maximum number of items to return from the beginning of the ordered list of results |
-| `firestartAt"`   | Return items greater than or equal to the specified key or value, depending on the order-by method chosen |
+| `firestartAt`   | Return items greater than or equal to the specified key or value, depending on the order-by method chosen |
 | `fireendat`   | Return items less than or equal to the specified key or value, depending on the order-by method chosen |
 | `fireequalto`   | Return items equal to the specified key or value, depending on the order-by method chosen |
 | `fireexists`   | Returns true if this dataSnapshot contains any data |
