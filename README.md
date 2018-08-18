@@ -21,7 +21,7 @@
 | `fireset`   | Set data to the firebase database |
 | `fireretrieve`   | Retrieve data from firebase |
 | `fireretrieveloop`   | Retrieve data and loop inside the direct children |
-| `firebaseval`   | Using `val()` method to retrieve the data inside a listener |
+| `fireval`   | Using `val()` method to retrieve the data inside a listener |
 | `fireretrieveonce`   | Retrieve data once |
 | `firekey`   | Create a key and simultaneously retrieve the key |
 | `fireupdate`   | Updating specific fields |

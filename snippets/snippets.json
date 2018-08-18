@@ -34,7 +34,7 @@
        "body":[
         "firebase.database().ref(${0:/* path */}).on(${0:eventType},(${1:snapshot})=> {",
             "${2: /* handle read data */}",
-            "console.log(${3: /* log data */}",
+            "console.log(${3: /* log data */})",
         " });"
        ],
        "description":"Retrieve data from firebase"
@@ -47,13 +47,14 @@
             "${1:snapshot}.forEach((${2:childSnapshot})=>{",
             "${3: /* handle read data */}",
             "console.log(${4: /* log data */})",
+            " });",
         " });"
        ],
        "description": "Retrieve data and loop inside the direct children"
    },
 
    "firebase val":{
-       "prefix":"firebaseval",
+       "prefix":"fireval",
        "body": ["let ${0:names}=${1:snapshot}.val().${2:name}",
         "/* retrieve the name from the database */"
        ],
@@ -65,7 +66,7 @@
     "body":[
      "firebase.database().ref(${0:/* path */}).once(${0:eventType}).then((${1:snapshot})=> {",
          "${2: /* handle read data */}",
-         "console.log(${3: /* log data */}",
+         "console.log(${3: /* log data */})",
      "});"
     ],
     "description": "Retrieve data once"
@@ -203,23 +204,30 @@
 
 "firebase storage url reference":{
     "prefix":"firestorageurlref",
-    "body":"let ${0:gsReference} = storage.refFromURL(${1: /* gs:// or https:// */})",
+    "body":"let ${0:gsReference} = storage.refFromURL(${1: /* gs:// or https:// */});",
     "description":"Create a reference from a Google Cloud Storage URI or https url."
 },
 
 "firebase download file":{
     "prefix":"firestoragedownloadfile",
-    "body":["firebase.storage().ref().child(${0:/* path */}).getDownloadURL().then(function(${1:url) {",
-        "//`url` is the download URL for the file.",
-        "/*download using XMLHttpRequest() and handle errors*/",
-        " });"
+    "body":[ "${0:storageRef}.child(${1:/* path */}).getDownloadURL().then(function(url) {",
+        "// `url` is the download URL for 'images/stars.jpg'",
+        "//Download using `XMLHttpRequest()`",
+        "}).catch(function(error) {",
+            "// Handle any errors",
+          "});"
     ],
     "description":"Getting the download file from firebase storage."
     },
 
     "firebase delete file":{
         "prefix":"firestoragedeletefile",
-        "body": "${0:ref}.delete().then(function() {",
+        "body": ["${0:storageRef}.delete().then(function() {",
+             "// File deleted successfully",
+               "}).catch(function(error) {",
+              "//An error occurred!",
+            " });"
+        ],
         "description":"Delete a file"
     },
 
@@ -486,7 +494,7 @@
     "firestore delete document":{
         "prefix":"deletedocfirestore",
         "body":[
-            "${0:db}.collection(${2:/* collection_name */}).doc${3: /* document_name */}).delete().then(function() {",
+            "${0:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */}).delete().then(function() {",
                 "${4:/* log the data */}",
             "}).catch(function(error) {",
                 "console.error(${5:error});",
@@ -498,7 +506,7 @@
     "firestore delete a field":{
         "prefix":"deletefieldfirestore",
         "body":[
-            "let ${0:ref}= ${0:db}.collection(${2:/* collection_name */}).doc${3: /* document_name */});",
+            "let ${0:ref}= ${0:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
             "let ${4:removeField} = ${5:ref}.update({",
                 "${6:fieldName}: firebase.firestore.FieldValue.delete()",
            " });"
