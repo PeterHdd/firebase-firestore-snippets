@@ -64,6 +64,7 @@
 | `firetwitterinstance`   | Get instance of twitter provider |
 | `firegithubinstance`   | Get instance of github provider |
 | `firecustomauth`   | Sign in the user using custom authentication |
+| `fireanonymously`   | Sign in the user anonymously |
 
 ### Firestore
 | Trigger  | Description |
