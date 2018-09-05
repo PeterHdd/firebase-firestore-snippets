@@ -2,7 +2,7 @@
     "name": "firebase-firestore-snippets",
     "displayName": "Firebase/Firestore Snippets",
     "description": "Snippets for both Firebase and Firestore!",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "PeterHdd",
     "icon":"images/firebase.png",
     "license": "SEE LICENSE IN LICENSE.md",
