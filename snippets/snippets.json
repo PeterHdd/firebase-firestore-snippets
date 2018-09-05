@@ -467,6 +467,17 @@
         ],
         "description":"Read data from a collection in firestore"
     },
+
+    "firestore set data":{
+        "prefix":"setdatafirestore",
+        "body":[ 
+            "${0:db}.collection(${1:/* collection_name */}).doc(${2:/* document_name */}).set({",
+                "${3:attribute}: ${4:value}",
+           " });"
+            
+        ],
+        "description":"Creates or overwrite a single document, use the `set()` method"
+    },
     
     "firestore reference":{
         "prefix":"referencefirestore",
@@ -506,7 +517,7 @@
     "firestore delete a field":{
         "prefix":"deletefieldfirestore",
         "body":[
-            "let ${0:ref}= ${0:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+            "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
             "let ${4:removeField} = ${5:ref}.update({",
                 "${6:fieldName}: firebase.firestore.FieldValue.delete()",
            " });"
@@ -523,6 +534,16 @@
         ],
         "description":"where query in firestore"
     },
+
+    "firestore array contains":{
+        "prefix":"arraycontainsfirestore",
+        "body":[
+           " ${0:ref}.where(${1:/* field name */}, ${2:array-contains}, ${3:/* value */})"
+        ],
+        "description":" Using `array-contains` it filters based on array value"
+
+    },
+
     "firestore limit":{
         "prefix":"limitfirestore",
         "body": "${0:ref}.orderBy(${1:/* fieldname */}).limit(${2: /* number */});",
@@ -534,6 +555,17 @@
             "${0:ref}.orderBy(${1:/* fieldname */}).orderBy(${2: /* name */}, ${3: /* desc */});"
         ],
         "description":"Order by multiple fields in firestore."
+    },
+
+    "firestore Listen to Changes":{
+        "prefix":"realtimeupdatefirestore",
+        "body":[
+            "${0:db}.collection(${1:/* collection_name */}).doc(${2:/* collection_name */})",
+            ".onSnapshot(function(${3:doc}) {",
+                "console.log(${3:doc}.data());",
+           " });"
+        ],
+        "description":"Listens for realtime changes on a document using `onSnapshot`"
     }
 
     }

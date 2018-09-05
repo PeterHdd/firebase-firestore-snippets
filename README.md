@@ -2,6 +2,7 @@
 ## VS Code Firebase and Firestore snippets
 -------------------
 [![Version](https://vsmarketplacebadge.apphb.com/version/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
+[![Installs](https://vsmarketplacebadge.apphb.com/installs/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
 
 ## Supported Languages
 * JavaScript (.js)
@@ -59,7 +60,7 @@
 | `firedeleteuser`   | Delete a user account with the delete method |
 | `firesignout`   | Sign out the user |
 | `firegoogleinstance`   | Get instance of the google provider |
-| `fireprovidersignin`   | eSign in with google |
+| `fireprovidersignin`   | Sign in with google |
 | `firefacebookinstance`   | Get instance of facebook provider |
 | `firetwitterinstance`   | Get instance of twitter provider |
 | `firegithubinstance`   | Get instance of github provider |
@@ -71,12 +72,15 @@
 | -------: | ------- |
 | `initializefirestore`   | Initialize Cloud Firestore through Firebase |
 | `adddatafirestore`   | Creating a new collection and document in firestore |
+| `setdatafirestore` | Creates or overwrite a single document, use the `set()` method |
 | `readdatafirestore`   | Read data from a collection in firestore |
 | `referencefirestore`   | Add firestore reference |
 | `updatefirestore`   | Update the document in firestore |
 | `deletedocfirestore`   | Delete a document in firestore |
 | `deletefieldfirestore`   | Delete a field in firestore document |
 | `wherefirestore`   | where query in firestore |
+| `arraycontainsfirestore` | Using `array-contains` it filters based on array value |
 | `limitfirestore`   | Retrieves the first three value of the field |
 | `ordermultifirestore`   | Order by multiple fields in firestore |
+| `realtimeupdatefirestore` | Listens for realtime changes on a document using `onSnapshot` |
 
