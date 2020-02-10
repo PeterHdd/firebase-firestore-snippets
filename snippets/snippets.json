@@ -529,7 +529,7 @@
         "body":[
             "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
             "let ${4:addField} = ${5:ref}.update({",
-                "${6:fieldName}: firebase.firestore.FieldValue.arrayUnion(${3: /* field_name */})",
+                "${6:fieldName}: firebase.firestore.FieldValue.arrayUnion(${7: /* field_name */})",
            " });"
         ],
         "description":"Add an element to an array field"
@@ -539,7 +539,7 @@
         "body":[
             "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
             "let ${4:removeField} = ${5:ref}.update({",
-                "${6:fieldName}: firebase.firestore.FieldValue.arrayRemove(${3: /* field_name */})",
+                "${6:fieldName}: firebase.firestore.FieldValue.arrayRemove(${7: /* field_name */})",
            " });"
         ],
         "description":"Remove an element from array field"
@@ -549,7 +549,7 @@
         "body":[
             "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
             "let ${4:incrementField} = ${5:ref}.update({",
-                "${6:fieldName}: firebase.firestore.FieldValue.increment(${3: /* number */})",
+                "${6:fieldName}: firebase.firestore.FieldValue.increment(${7: /* number */})",
            " });"
         ],
         "description":"Increment or decrement a numeric field value"
