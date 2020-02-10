@@ -83,4 +83,7 @@
 | `limitfirestore`   | Retrieves the first three value of the field |
 | `ordermultifirestore`   | Order by multiple fields in firestore |
 | `realtimeupdatefirestore` | Listens for realtime changes on a document using `onSnapshot` |
+|`arrayunionfieldfirestore`|	Adds an element to an array field|
+`arrayremovefieldfirestore`|	Remove an element from array field|
+|`incrementfieldfirestore`|	Increment or decrement a numeric field value|
 

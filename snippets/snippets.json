@@ -524,6 +524,36 @@
         ],
         "description":"Delete a field in firestore document."
     },
+    "firestore add an element to an array field":{
+        "prefix":"arrayunionfieldfirestore",
+        "body":[
+            "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+            "let ${4:addField} = ${5:ref}.update({",
+                "${6:fieldName}: firebase.firestore.FieldValue.arrayUnion(${3: /* field_name */})",
+           " });"
+        ],
+        "description":"Add an element to an array field"
+    },
+    "firestore remove an element from array field":{
+        "prefix":"arrayremovefieldfirestore",
+        "body":[
+            "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+            "let ${4:removeField} = ${5:ref}.update({",
+                "${6:fieldName}: firebase.firestore.FieldValue.arrayRemove(${3: /* field_name */})",
+           " });"
+        ],
+        "description":"Remove an element from array field"
+    },
+    "firestore increment numeric field":{
+        "prefix":"incrementfieldfirestore",
+        "body":[
+            "let ${0:ref}= ${1:db}.collection(${2:/* collection_name */}).doc(${3: /* document_name */});",
+            "let ${4:incrementField} = ${5:ref}.update({",
+                "${6:fieldName}: firebase.firestore.FieldValue.increment(${3: /* number */})",
+           " });"
+        ],
+        "description":"Increment or decrement a numeric field value"
+    },
     
     "firestore where query":{
         "prefix":"wherefirestore",

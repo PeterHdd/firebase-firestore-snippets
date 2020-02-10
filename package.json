@@ -2,18 +2,18 @@
     "name": "firebase-firestore-snippets",
     "displayName": "Firebase/Firestore Snippets",
     "description": "Snippets for both Firebase and Firestore!",
-    "version": "0.0.4",
+    "version": "0.0.7",
     "publisher": "PeterHdd",
-    "icon":"images/firebase.png",
+    "icon": "images/firebase.png",
     "license": "SEE LICENSE IN LICENSE.md",
     "repository": {
         "type": "git",
         "url": "https://github.com/PeterHdd/firebase-firestore-snippets"
-      },
-      "galleryBanner": {
-          "color": "#ed9421",
-          "theme": "dark"
-      },
+    },
+    "galleryBanner": {
+        "color": "#ed9421",
+        "theme": "dark"
+    },
     "engines": {
         "vscode": "^1.20.0"
     },
@@ -33,38 +33,40 @@
     "contributes": {
         "snippets": [
             {
-            "language": "javascript",
-            "path": "./snippets/snippets.json"
-        },
-        {
-            "language": "html",
-            "path": "./snippets/snippets.json"
-          },
-          {
-            "language": "vue",
-            "path": "./snippets/snippets.json"
-        },
-        {
-            "language": "typescript",
-            "path": "./snippets/snippets.json"
-          }, {
-            "language": "javascriptreact",
-            "path": "./snippets/snippets.json"
-          }, {
-            "language": "typescriptreact",
-            "path": "./snippets/snippets.json"
-          }
-      ]
+                "language": "javascript",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "html",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "vue",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "javascriptreact",
+                "path": "./snippets/snippets.json"
+            },
+            {
+                "language": "typescriptreact",
+                "path": "./snippets/snippets.json"
+            }
+        ]
     },
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "eslint": "^4.11.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "eslint": "^4.11.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.36"
     }
 }
