@@ -1,8 +1,9 @@
 # Firebase
 ## VS Code Firebase and Firestore snippets
 -------------------
-[![Version](https://vsmarketplacebadge.apphb.com/version/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
+[![Version](https://vsmarketplacebadge.apphb.com/version-short/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
+[![Downloads](https://vsmarketplacebadge.apphb.com/downloads-short/peterhdd.firebase-firestore-snippets.svg)](https://marketplace.visualstudio.com/items?itemName=peterhdd.firebase-firestore-snippets)
 
 ## Supported Languages
 * JavaScript (.js)
